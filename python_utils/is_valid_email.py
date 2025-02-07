@@ -1,18 +1,21 @@
 import regex
 
-## Function to compare given email to regexp pattern
 
 def is_valid_email(email):
+    """
+        Function to compare given email to regexp pattern
+    """
 
     pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
 
     return regex.match(pattern, email) is not None
 
 
-## Function to compare list of emails to regexp pattern
-
 def is_valid_email_list(emails: list):
-
+    """
+        Function to compare list of emails to regexp pattern
+    """
+    
     pattern = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
 
     invalid_email = []
