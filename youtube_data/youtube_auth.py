@@ -6,6 +6,12 @@ import pickle
 
 
 def youtube_auth():
+    """
+        Authenticates with Youtube API.
+        Generates pickle file with users's access tokens.
+        Requires external config on Google Cloud for Client OAuth.
+    """
+
     ## List of scopes using Youtube API
     SCOPES = ["https://www.googleapis.com/auth/youtube.force-ssl"]
     credentials = None
@@ -15,8 +21,6 @@ def youtube_auth():
     ## Client Oauth downloaded from https://console.cloud.google.com/auth/clients 
     client_secrets_file = 'credentials.json'
 
-
-    ## token.pickle stores the user's access and refresh tokens
 
     ## checks if token.pickle file exists before reading, otherwise proceeds to generate it for the first time
     if os.path.exists("token.pickle"):
