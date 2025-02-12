@@ -36,4 +36,4 @@ def youtube_auth():
         with open("token.pickle", "wb") as token:
             pickle.dump(credentials, token)
 
-    return build(api_service_name, api_version, credentials)
+    return build(serviceName=api_service_name,version=api_version,developerKey=credentials)
