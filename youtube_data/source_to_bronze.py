@@ -14,7 +14,7 @@ def get_channel_data(youtube,channel_id,output_path,ct_ltz):
     ## --------------------- Channel Data  --------------------- ##
     channel_request = youtube.channels().list(
         ## Available channel list parts at: https://developers.google.com/youtube/v3/docs/channels/list
-        part = "snippet,contentDetails,statistics",
+        part = "snippet,contentDetails,statistics,status",
         id = channel_id
     ).execute()
 
@@ -31,7 +31,7 @@ def get_channel_data(youtube,channel_id,output_path,ct_ltz):
     ## --------------------- Playlist Data  --------------------- ##
     playlist_request = youtube.playlists().list(
         ## Available playlist list parts at: https://developers.google.com/youtube/v3/docs/playlists/list
-        part = "snippet,contentDetails",
+        part = "snippet,contentDetails,status",
         channelId = channel_id,
         maxResults=25
     ).execute()
@@ -60,7 +60,7 @@ def get_channel_data(youtube,channel_id,output_path,ct_ltz):
 
         playlist_item_request = youtube.playlistItems().list(
             ## Available playlist list parts at: https://developers.google.com/youtube/v3/docs/playlistItems/list
-            part = "snippet,contentDetails",
+            part = "snippet,contentDetails,status",
             playlistId = playlist_id,
             maxResults=25
         ).execute()
@@ -87,7 +87,7 @@ def get_channel_data(youtube,channel_id,output_path,ct_ltz):
         for id in video_ids:
             video_request = youtube.videos().list(
                 ## Available playlist list parts at: https://developers.google.com/youtube/v3/docs/playlistItems/list
-                part = "snippet,contentDetails",
+                part = "snippet,contentDetails,statistics,status",
                 id = id,
                 maxResults=25
             ).execute()
@@ -98,10 +98,10 @@ def get_channel_data(youtube,channel_id,output_path,ct_ltz):
 
 if __name__ == "__main__":
     ## Input channel_id of choise
-    channel_id = 'UC5JY5JhsD4_GA2W6N8_Uaiw'
+    channel_id = <<'channel_id'>>
 
     ## Output path for json file
-    output_path = '/Users/mateuscruz/Documents/Work/Projects/Warehouse/youtube/bronze/'
+    output_path = <<'output_path'>>
 
     ## Auth function call
     youtube = youtube_auth.youtube_auth()
