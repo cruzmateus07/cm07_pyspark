@@ -1,10 +1,11 @@
 import datetime
 import json
+import os
 import youtube_auth
 
 
 def get_channel_data(youtube,channel_id,output_path,ct_ltz):
-    """
+    """"
         Function to get Youtube Channel data based on provided channel_id.
         Saves data to json file on output path of choice.
     """
@@ -14,12 +15,17 @@ def get_channel_data(youtube,channel_id,output_path,ct_ltz):
         id = channel_id
     ).execute()
 
-    with open(f"{output_path}channel/channel_data_{ct_ltz}", "w") as output:
+    ## Checks if directory exists, otherwise creates it
+    json_file_path = f"{output_path}channel/"
+    if not os.path.exists(json_file_path):
+        os.makedirs(json_file_path)
+    
+    with open(f"{json_file_path}channel_data_{ct_ltz}", "w") as output:
         json.dump(request, output)
 
 
 def get_playlist_data(youtube,channel_id,output_path,ct_ltz):
-    """
+    """"
         Function to get Youtube Playlist data based on provided channel_id.
         Saves data to json file on output path of choice.
     """
@@ -30,7 +36,12 @@ def get_playlist_data(youtube,channel_id,output_path,ct_ltz):
         maxResults=25
     ).execute()
 
-    with open(f"{output_path}playlist/playlist_data_{ct_ltz}", "w") as output:
+    ## Checks if directory exists, otherwise creates it
+    json_file_path = f"{output_path}playlist/"
+    if not os.path.exists(json_file_path):
+        os.makedirs(json_file_path)
+
+    with open(f"{json_file_path}playlist_data_{ct_ltz}", "w") as output:
         json.dump(request, output)
 
 
