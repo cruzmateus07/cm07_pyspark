@@ -10,7 +10,6 @@ def get_channel_data(youtube,channel_id,output_path,ct_ltz):
     """
     request = youtube.channels().list(
         ## Available channel list parts at: https://developers.google.com/youtube/v3/docs/channels/list
-        ## List: auditDetails | brandingSettings | contentDetails | contentOwnerDetails | id | localizations | snippet | statistics | status | topicDetails
         part = "snippet,contentDetails,statistics",
         id = channel_id
     ).execute()
