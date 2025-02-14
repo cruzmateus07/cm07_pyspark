@@ -11,7 +11,7 @@ def get_channel_data(youtube,channel_id,output_path,ct_ltz):
     """
 
 
-    ## --------------------- Channel Data  --------------------- ##
+    ## --------------------- Channel Data --------------------- ##
     channel_request = youtube.channels().list(
         ## Available channel list parts at: https://developers.google.com/youtube/v3/docs/channels/list
         part = "snippet,contentDetails,statistics,status",
@@ -24,11 +24,11 @@ def get_channel_data(youtube,channel_id,output_path,ct_ltz):
         os.makedirs(channel_json_file_path)
     
     ## Saves Channel Data in Json Format Files
-    with open(f"{channel_json_file_path}{ct_ltz}", "w") as output:
+    with open(f"{channel_json_file_path}channel_data.json", "w") as output:
         json.dump(channel_request, output)
 
 
-    ## --------------------- Playlist Data  --------------------- ##
+    ## --------------------- Playlist Data --------------------- ##
     playlist_request = youtube.playlists().list(
         ## Available playlist list parts at: https://developers.google.com/youtube/v3/docs/playlists/list
         part = "snippet,contentDetails,status",
@@ -41,11 +41,11 @@ def get_channel_data(youtube,channel_id,output_path,ct_ltz):
     if not os.path.exists(playlist_json_file_path):
         os.makedirs(playlist_json_file_path)
 
-    with open(f"{playlist_json_file_path}{ct_ltz}", "w") as output:
+    with open(f"{playlist_json_file_path}playlist_data.json", "w") as output:
         json.dump(playlist_request, output)
 
 
-    ## --------------------- Playlist Items Data  --------------------- ##
+    ## --------------------- Playlist Items Data --------------------- ##
     ## Checks if directory exists, otherwise creates it
     playlist_items_json_file_path = f"{output_path}channel_{channel_id}/playlist_items_data/"
     if not os.path.exists(playlist_items_json_file_path):
@@ -65,11 +65,11 @@ def get_channel_data(youtube,channel_id,output_path,ct_ltz):
             maxResults=25
         ).execute()
 
-        with open(f"{playlist_items_json_file_path}playlist_{playlist_id}_items_{ct_ltz}", "w") as output:
+        with open(f"{playlist_items_json_file_path}playlist_{playlist_id}_items_data.json", "w") as output:
             json.dump(playlist_item_request, output)
 
 
-        ## --------------------- Video Data  --------------------- ##
+        ## --------------------- Video Data --------------------- ##
         ## Checks if directory exists, otherwise creates it
         video_json_file_path = f"{output_path}channel_{channel_id}/video_data/"
         if not os.path.exists(video_json_file_path):
@@ -92,7 +92,7 @@ def get_channel_data(youtube,channel_id,output_path,ct_ltz):
                 maxResults=25
             ).execute()
 
-            with open(f"{video_json_file_path}video_{id}_{ct_ltz}", "w") as output:
+            with open(f"{video_json_file_path}video_{id}_data.json", "w") as output:
                 json.dump(video_request, output)
 
 
