@@ -1,0 +1,2 @@
+pyspark==3.5.4
+python_utils==3.9.1
