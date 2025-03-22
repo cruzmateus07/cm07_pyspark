@@ -4,5 +4,5 @@ Collection of Python Utility Functions to reduce implementation effort on bigger
 
 # Requirements
 
-[requirements.txt](requirements.txt)
+[requirements.txt](/python_utils/requirements.txt)
 

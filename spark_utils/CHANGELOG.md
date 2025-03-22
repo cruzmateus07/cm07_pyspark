@@ -8,4 +8,4 @@ Spark Utilities Launched
 
 ## Added
 
-* [dataframe_utils.py](dataframe_utils.py) PATCH Add class with get_last_update_ts method to spark dataframes
+* [dataframe_utils.py](/spark_utils/dataframe_utils.py) PATCH Add class with get_last_update_ts method to spark dataframes

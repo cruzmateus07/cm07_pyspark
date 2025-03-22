@@ -4,4 +4,4 @@ Collection of Spark Utility Functions to reduce implementation effort on bigger 
 
 # Requirements
 
-[requirements.txt](requirements.txt)
+[requirements.txt](/spark_utils/requirements.txt)
