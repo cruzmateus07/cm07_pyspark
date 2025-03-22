@@ -9,5 +9,5 @@ Project Launched
 
 ## Added
 
-* [access_log.zip](access_log.zip) PATCH Added log sample in zip format (.txt file ziped)
-* [main.py](main.py) PATCH Added logic to unzip log data, parse text file into spark dataframe using standard regexp format
+* [access_log.zip](/web_server_access_log/access_log.zip) PATCH Added log sample in zip format (.txt file ziped)
+* [main.py](/web_server_access_log/main.py) PATCH Added logic to unzip log data, parse text file into spark dataframe using standard regexp format
