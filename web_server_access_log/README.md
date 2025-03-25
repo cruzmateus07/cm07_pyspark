@@ -26,6 +26,10 @@ Since this distribution is supposed to be used directly into own machine termina
 
 If Setup step was correctly executed, just run main.py file in your terminal.
 
+## 2. Run unit_tests.py
+
+Run unit_tests.py file in your terminal
+
 
 # Current Features
 
@@ -35,6 +39,15 @@ The solution provides the analysis of a few indicators for the log file provided
   * Distinct Client IPs
   * How many different days are in the file
   * Request's Volume analysis such as - Total Volume, Max Volume and Min Volume Size, Average Volume Size
+
+Unit tests:
+  * 1 - Test if logs are correctly parsed into structured format
+  * 2 - Test counting distinct client IPs
+  * 3 - Test if the DataFrame contains duplicate entries
+
+An option to save the processed data was provided using the Data Lake integration and following the modeling below:
+
+[web_server_access_log_modeling.png](web_server_access_log_modeling.png)
 
 
 # Change Log
