@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import regexp_extract
+from pyspark.sql.functions import col, concat_ws, current_timestamp, md5, regexp_extract
 from python_utils.unzip import unzip
 import os
 
@@ -11,6 +11,7 @@ cwd = os.getcwd()
 zip_path = f"{cwd}/access_log.zip"
 ziped_file = "access_log.txt"
 extract_path = f"{cwd}/access_log_unzip/"
+table_save_path = f"{cwd}/web_server_access_log/"
 
 unzip(zip_path, ziped_file, extract_path)
 
@@ -33,3 +34,10 @@ parsed_log_df = raw_log_df.select(
     regexp_extract('value', log_pattern, 6).alias('status_code'),
     regexp_extract('value', log_pattern, 7).alias('response_size')
 )
+
+# Adding control columns to parsed_log_df for saving purposes
+web_server_access_table = parsed_log_df \
+    .withColumn("hash_id", md5(concat_ws("", col("ip_address"), col("timestamp")))) \
+    .withColumn("meta$ingested_on", current_timestamp())
+
+web_server_access_table.write.format("parquet").mode("overwrite").save(table_save_path)
